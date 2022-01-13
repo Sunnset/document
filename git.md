@@ -86,6 +86,9 @@
 ### 分支操作
  - 将本地修改文件添加版本控制：`git add [.|文件路径]`
  - 将本地版本控制下的修改提交到本地：`git commit -m "提交说明"`
+ - 修改上次提交但未推送日志：`git commit --amend`
+ - 修改上次提交并已推送日志：`git commit --amend `和`git push origin master --force` 。注意：修改后的日志强制push到git服务器，如果别人本地的副本有修改，很可能会导致他们同步不了，所以最好进行核对。
+ - 修改以前的提交但未推送日志：假设要修改倒数第三次提交，使用git log查看，然后执行`git rebase -i HEAD~3`命令，会把最后三次的提交显示出来，找到需要修改的行，将`pick`改为`edit`，然后保存。然后执行`git commit --amend`编辑提交日志，然后执行`git rebase --continue`完成修改。rebase目的是打开提交的历史记录，选择要修改的内容。git会在一个新的分支修改内容，git rebase --continue则是回到之前的分支。
  - 将本地修改推送到远程：`git push origin branchname`
  - ：`git getch`
  - ：`git pull`
