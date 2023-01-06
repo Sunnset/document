@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>navicat &#8211; 落雨博客</title>
+	<atom:link href="https://sunnset.github.io/document/tag/navicat/feed" rel="self" type="application/rss+xml" />
+	<link>https://sunnset.github.io/document/</link>
+	<description></description>
+	<lastBuildDate>Tue, 03 Jan 2023 12:41:43 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.3</generator>
+	<item>
+		<title>window navicat16无限重复试用</title>
+		<link>https://sunnset.github.io/document/2023/01/03/46.html</link>
+					<comments>https://sunnset.github.io/document/2023/01/03/46.html#respond</comments>
+		
+		<dc:creator><![CDATA[落, 雨]]></dc:creator>
+		<pubDate>Tue, 03 Jan 2023 12:20:12 +0000</pubDate>
+				<category><![CDATA[未分类]]></category>
+		<category><![CDATA[navicat]]></category>
+		<guid isPermaLink="false">https://sunnset.github.io/document/?p=46</guid>
+
+					<description><![CDATA[通过清除软件使用时间相关的注册表信息的方式来实现无限使用。 1. 下载navicat16 打开navicat官 [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<blockquote class="wp-block-quote"><p><em>通过清除软件使用时间相关的注册表信息的方式来实现无限使用。</em></p></blockquote>
+
+
+
+<h2>1. 下载navicat16</h2>
+
+
+
+<p>打开<a rel="noreferrer noopener" href="https://navicat.com.cn/" data-type="URL" data-id="https://navicat.com.cn/" target="_blank">navicat官网</a>，点击顶部的产品，在跳转的网页中找到Navicat Premium16免费试用按钮，点击跳转到下载页面，在该页面选择自己需要使用的版本。</p>
+
+
+
+<p>下载链接：</p>
+
+
+
+<ul><li>windows(64 bit)：<a href="https://navicat.com.cn/download/support-download?product=navicat_premium_cs_x64.exe"><a href="https://download.navicat.com.cn/download/navicat161_premium_cs_x64.exe">https://download.navicat.com.cn/download/navicat161_premium_cs_x64.exe</a></a></li></ul>
+
+
+
+<h2>2. 软件安装</h2>
+
+
+
+<p>双击下载好的软件，点击下一步进行安装并记录软件安装路径。</p>
+
+
+
+<h2>3. 添加试用脚本</h2>
+
+
+
+<p>在navicat安装路径内，新建文本文档并修改名称为：Navicat Premium 16Crack.bat。使用记事本打开该文件，将一下内容复制粘贴到记事本中，保存。</p>
+
+
+
+<pre class="wp-block-code"><code>@echo off
+
+echo Delete HKEY_CURRENT_USER\Software\PremiumSoft\NavicatPremium\Registration&#091;version and language]
+for /f %%i in ('"REG QUERY "HKEY_CURRENT_USER\Software\PremiumSoft\NavicatPremium" /s | findstr /L Registration"') do (
+    reg delete %%i /va /f
+)
+echo.
+
+echo Delete Info folder under HKEY_CURRENT_USER\Software\Classes\CLSID
+for /f %%i in ('"REG QUERY "HKEY_CURRENT_USER\Software\Classes\CLSID" /s | findstr /E Info"') do (
+    reg delete %%i /va /f
+)
+echo.
+
+echo Finish
+</code></pre>
+
+
+
+<h2>4. 将脚本设置为开机自动执行</h2>
+
+
+
+<p>打开文件夹：<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>，将脚本文件移动到该文件夹下，完成开机自动执行的设置。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sunnset.github.io/document/2023/01/03/46.html/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

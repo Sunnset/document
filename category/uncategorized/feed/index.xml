@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>未分类 &#8211; 落雨博客</title>
+	<atom:link href="https://sunnset.github.io/document/category/uncategorized/feed" rel="self" type="application/rss+xml" />
+	<link>https://sunnset.github.io/document/</link>
+	<description></description>
+	<lastBuildDate>Fri, 06 Jan 2023 12:54:31 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.3</generator>
+	<item>
+		<title>Git操作命令</title>
+		<link>https://sunnset.github.io/document/2023/01/06/60.html</link>
+					<comments>https://sunnset.github.io/document/2023/01/06/60.html#respond</comments>
+		
+		<dc:creator><![CDATA[落, 雨]]></dc:creator>
+		<pubDate>Fri, 06 Jan 2023 12:54:29 +0000</pubDate>
+				<category><![CDATA[未分类]]></category>
+		<guid isPermaLink="false">https://sunnset.github.io/document/?p=60</guid>
+
+					<description><![CDATA[Git配置 Git配置文件优先级：仓库级别(local) &#62; 用户级别(global) &#62; 系统级 [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<h2>Git配置</h2>
+
+
+
+<blockquote class="wp-block-quote"><p><em>Git配置文件优先级：仓库级别(local) &gt; 用户级别(global) &gt; 系统级别(system)。仓库级别对应配置文件是当前仓库下的.git/config， 用户级别对应的配置文件是当前用户目录下的~/.gitconfig，系统级别对应的配置文件是git安装目录下的 /etc/gitconfig。</em></p></blockquote>
+
+
+
+<ul><li>查看仓库配置：<code>git config --local -l</code></li><li>查看用户配置：<code>git config --global -l</code></li><li>查看系统配置：<code>git config --system -l</code></li><li>查看所有配置：<code>git config -l</code></li><li>配置编辑器：<code>git config --global core.edit emacs</code></li><li>编辑配置文件：<code>git config [--local|--system|--global] -e</code></li><li>添加一个配置项：<code>git config [--local|--system|--global] --add section.key value</code></li><li>获取配置项：<code>git config [--local|--system|--global] --get section.key</code></li><li>删除配置项：<code>git config [--local|--system|--global] --unset section.key</code></li><li>中文乱码处理：<code>git config --global core.quotepath false</code></li><li>定义全局的用户名：<code>git config --global user.name "……"</code></li><li>定义全局的邮件地址：<code>git config --global user.email "……"</code></li><li>配置git客户端保存密码：<code>git config --global credential.helper store</code></li><li>不校验https证书：<code>git config [--local|--system|--global] http.sslVerify "false"</code></li></ul>
+
+
+
+<h2>颜色配置</h2>
+
+
+
+<pre class="wp-block-code"><code>&#091;color]
+        ui = auto
+&#091;color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+&#091;color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+&#091;color "diff"]
+        meta = yellow
+        frag = magenta bold
+        commit = yellow bold
+        old = red bold
+        new = green bold
+        whitespace = red reverse
+&#091;color "diff-highlight"]
+        oldNormal = red bold
+        oldHighlight = red bold 52
+        newNormal = green bold
+        newHighlight = green bold 22</code></pre>
+
+
+
+<h2>配置提交信息模板</h2>
+
+
+
+<blockquote class="wp-block-quote"><p><em>该配置经测试仅对图形化工具生效</em></p></blockquote>
+
+
+
+<pre class="wp-block-code"><code>&#091;commit]
+        template = /Users/zbwang/.gitcommit_template
+
+
+.gitcommit_template:
+&lt;type&gt;(&lt;scope&gt;)：&lt;subject&gt;
+
+&lt;body&gt;
+
+&lt;footer&gt;</code></pre>
+
+
+
+<h2>远程仓库</h2>
+
+
+
+<ul><li>检出仓库：<code>git clone url localFolderName</code></li><li>查看远程仓库：<code>git remote -v</code></li><li>添加远程仓库：<code>git remote add [name] [url]</code></li><li>删除远程仓库：<code>git remote rm [name]</code></li></ul>
+
+
+
+<h2>分支操作</h2>
+
+
+
+<h3>查看分支命令</h3>
+
+
+
+<ul><li>查看本地所有分支：<code>git branch</code></li><li>查看远程所有分支：<code>git branch -r</code></li><li>查看本地和远程所有分支：<code>git branch -a</code></li><li>本地切换分支：<code>git switch branchName</code>或者<code>git checkout branchName</code></li><li>本地创建分支：<code>git branch newBranchName</code></li><li>本地创建分支并且到新建分支：<code>git checkout -b newBranchName</code></li><li>本地分支删除：<code>git branch -d branchName</code>，==警告：删除分支的时候不能在要删除的分支上执行操作==。</li><li>提交本地分支到远程仓库：<code>git push origin branchName</code></li><li>删除远程分支：<code>git push --delete origin branchName</code></li><li>创建没有父分支的分支：<code>git checkout --orphan newbranchname</code></li></ul>
+
+
+
+<h2>分支操作</h2>
+
+
+
+<ul><li>将本地修改文件添加版本控制：<code>git add [.|文件路径]</code></li><li>将本地版本控制下的修改提交到本地：<code>git commit -m "提交说明"</code></li><li>修改上次提交但未推送日志：<code>git commit --amend</code></li><li>修改上次提交并已推送日志：<code>git commit --amend&nbsp;</code>和<code>git push origin master --force</code>&nbsp;。注意：修改后的日志强制push到git服务器，如果别人本地的副本有修改，很可能会导致他们同步不了，所以最好进行核对。</li><li>修改以前的提交但未推送日志：假设要修改倒数第三次提交，使用git log查看，然后执行<code>git rebase -i HEAD~3</code>命令，会把最后三次的提交显示出来，找到需要修改的行，将<code>pick</code>改为<code>edit</code>，然后保存。然后执行<code>git commit --amend</code>编辑提交日志，然后执行<code>git rebase --continue</code>完成修改。rebase目的是打开提交的历史记录，选择要修改的内容。git会在一个新的分支修改内容，git rebase –continue则是回到之前的分支。</li><li>将本地修改推送到远程：<code>git push origin branchname</code></li><li>：<code>git getch</code></li><li>：<code>git pull</code></li><li>将branchname合并倒当前分支：<code>git merge -no-ff branchname</code></li></ul>
+
+
+
+<h2>堆栈操作</h2>
+
+
+
+<ul><li>将所有未提交的修改保存到堆栈中：<code>git stash</code></li><li>将所有未提交的修改保存到堆栈中：<code>git stash save "name"</code></li><li>查看当前堆栈中的列表：<code>git stash list</code></li><li>将堆栈中的内容弹出应用当当前分支并删除内容：<code>git stash pop</code></li><li>将堆栈中的内容弹出应用当当前分支不删除内容：<code>git stash apply [name]</code></li><li>删除指定名称的堆栈：<code>git stash drop name</code></li><li>删除堆栈里的所有内容：<code>git stash clear</code></li><li>查看最新保存[指定名称]的与当前目录的差异：<code>git stash show [name]</code>，<code>git stash -p [name]</code>&nbsp;可查看详细差异。</li><li>从最新的stash创建分支：<code>git stash branch</code>，应用场景：当储藏了部分工作，暂时不去理会，继续在当前分支进行开发，后续想将stash中的内容恢复到当前工作目录时，如果是针对同一个文件的修改（即便不是同行数据），那么可能会发生冲突，恢复失败，这里通过创建新的分支来解决。可以用于解决stash中的内容和当前目录的内容发生冲突的情景</li></ul>
+
+
+
+<h2>标签操作</h2>
+
+
+
+<ul><li>打印所有标签：<code>git tag</code></li><li>打印符合检索条件的标签：<code>git tag -l 1.*.*</code></li><li>查看对应标签状态：<code>git checkout 1.0.0</code></li><li>创建标签：<code>git tag 1.0.0-light</code></li><li>创建带备注标签：<code>git tag -a 1.0.0 -m "这是备注信息"</code></li><li>针对特定commit版本SHA创建标签：<code>git tag -a 1.0.0 0c3b62d -m "这是备注信息"</code></li><li>删除标签(本地)：<code>git tag -d 1.0.0</code></li><li>将本地所有标签发布到远程仓库：<code>git push origin --tags</code></li><li>指定版本发送：<code>git push origin 1.0.0</code></li><li>删除远程仓库对应标签（Git版本 &gt; V1.7.0）：<code>git push origin --delete 1.0.0</code></li><li>删除远程仓库对应标签（Git版本 &lt;= V1.7.0）：<code>git push origin :refs/tags/1.0.0</code></li></ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sunnset.github.io/document/2023/01/06/60.html/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>只使用java工具编译项目</title>
+		<link>https://sunnset.github.io/document/2023/01/06/58.html</link>
+					<comments>https://sunnset.github.io/document/2023/01/06/58.html#respond</comments>
+		
+		<dc:creator><![CDATA[落, 雨]]></dc:creator>
+		<pubDate>Fri, 06 Jan 2023 12:37:44 +0000</pubDate>
+				<category><![CDATA[未分类]]></category>
+		<guid isPermaLink="false">https://sunnset.github.io/document/?p=58</guid>
+
+					<description><![CDATA[声明:该方法适用于在只有java环境的条件下使用，如有IDE或者MAVEN请不要使用。 示例目录结构 exam [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<blockquote class="wp-block-quote"><p><em>声明:该方法适用于在只有java环境的条件下使用，如有IDE或者MAVEN请不要使用。</em></p></blockquote>
+
+
+
+<p>示例目录结构</p>
+
+
+
+<ul><li>example<ul><li>lib(依赖jar文件)</li><li>classes(编译文件输出文件夹，需要提前创建)</li><li>src(源代码文件夹)</li></ul></li></ul>
+
+
+
+<p>步骤一：在终端或者命令行中进入到example文件夹下。</p>
+
+
+
+<p>步骤二：使用命令<code>find src -name \*.java &gt; javaFilestxt.txt</code>查找需要编译的java文件并将结果写入 javaFiles.txt文件中。</p>
+
+
+
+<p>步骤三：创建编译文件输出文件夹，使用javac命令进行编译，无报错表示编译成功。命令内容:<code>javac classes -cp .:./1ib/* @./javaFiles.txt</code>，命令参数详解:-d为指定输出路径，需要提前创建;-cp指定 classpath为当前目录和lib目录下所有的库文件;@后面指定需要编译的文件列表。</p>
+
+
+
+<p>步骤四：(非必须)使用jar对编译文件进行打包。命令内容:<code>jar -cp a.jar folder1 folder2 filel file2</code>。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sunnset.github.io/document/2023/01/06/58.html/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>window navicat16无限重复试用</title>
+		<link>https://sunnset.github.io/document/2023/01/03/46.html</link>
+					<comments>https://sunnset.github.io/document/2023/01/03/46.html#respond</comments>
+		
+		<dc:creator><![CDATA[落, 雨]]></dc:creator>
+		<pubDate>Tue, 03 Jan 2023 12:20:12 +0000</pubDate>
+				<category><![CDATA[未分类]]></category>
+		<category><![CDATA[navicat]]></category>
+		<guid isPermaLink="false">https://sunnset.github.io/document/?p=46</guid>
+
+					<description><![CDATA[通过清除软件使用时间相关的注册表信息的方式来实现无限使用。 1. 下载navicat16 打开navicat官 [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<blockquote class="wp-block-quote"><p><em>通过清除软件使用时间相关的注册表信息的方式来实现无限使用。</em></p></blockquote>
+
+
+
+<h2>1. 下载navicat16</h2>
+
+
+
+<p>打开<a rel="noreferrer noopener" href="https://navicat.com.cn/" data-type="URL" data-id="https://navicat.com.cn/" target="_blank">navicat官网</a>，点击顶部的产品，在跳转的网页中找到Navicat Premium16免费试用按钮，点击跳转到下载页面，在该页面选择自己需要使用的版本。</p>
+
+
+
+<p>下载链接：</p>
+
+
+
+<ul><li>windows(64 bit)：<a href="https://navicat.com.cn/download/support-download?product=navicat_premium_cs_x64.exe"><a href="https://download.navicat.com.cn/download/navicat161_premium_cs_x64.exe">https://download.navicat.com.cn/download/navicat161_premium_cs_x64.exe</a></a></li></ul>
+
+
+
+<h2>2. 软件安装</h2>
+
+
+
+<p>双击下载好的软件，点击下一步进行安装并记录软件安装路径。</p>
+
+
+
+<h2>3. 添加试用脚本</h2>
+
+
+
+<p>在navicat安装路径内，新建文本文档并修改名称为：Navicat Premium 16Crack.bat。使用记事本打开该文件，将一下内容复制粘贴到记事本中，保存。</p>
+
+
+
+<pre class="wp-block-code"><code>@echo off
+
+echo Delete HKEY_CURRENT_USER\Software\PremiumSoft\NavicatPremium\Registration&#091;version and language]
+for /f %%i in ('"REG QUERY "HKEY_CURRENT_USER\Software\PremiumSoft\NavicatPremium" /s | findstr /L Registration"') do (
+    reg delete %%i /va /f
+)
+echo.
+
+echo Delete Info folder under HKEY_CURRENT_USER\Software\Classes\CLSID
+for /f %%i in ('"REG QUERY "HKEY_CURRENT_USER\Software\Classes\CLSID" /s | findstr /E Info"') do (
+    reg delete %%i /va /f
+)
+echo.
+
+echo Finish
+</code></pre>
+
+
+
+<h2>4. 将脚本设置为开机自动执行</h2>
+
+
+
+<p>打开文件夹：<code>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</code>，将脚本文件移动到该文件夹下，完成开机自动执行的设置。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sunnset.github.io/document/2023/01/03/46.html/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

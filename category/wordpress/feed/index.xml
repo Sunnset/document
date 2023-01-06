@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>wordpress &#8211; 落雨博客</title>
+	<atom:link href="https://sunnset.github.io/document/category/wordpress/feed" rel="self" type="application/rss+xml" />
+	<link>https://sunnset.github.io/document/</link>
+	<description></description>
+	<lastBuildDate>Sat, 31 Dec 2022 08:02:50 +0000</lastBuildDate>
+	<language>zh-CN</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.3</generator>
+	<item>
+		<title>wordpress管理员密码丢失</title>
+		<link>https://sunnset.github.io/document/2022/12/31/16.html</link>
+					<comments>https://sunnset.github.io/document/2022/12/31/16.html#respond</comments>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sat, 31 Dec 2022 08:02:50 +0000</pubDate>
+				<category><![CDATA[wordpress]]></category>
+		<guid isPermaLink="false">http://www.wordpress.abc:801/?p=16</guid>
+
+					<description><![CDATA[本操作需要修改wordpress数据库的数据。 在本地新建txt文档，将文档重名名为lospw.php。使用记 [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>本操作需要修改wordpress数据库的数据。</p>
+
+
+
+<p>在本地新建txt文档，将文档重名名为lospw.php。使用记事本打开lospw.php，在记事本内输入以下代码并保存：</p>
+
+
+
+<pre class="wp-block-code"><code><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-palette-color-3-color">&lt;?php
+if(!empty($_GET&#91;"password"]) &amp;&amp; strlen($_GET&#91;"password"]) >= 10) {
+$password = $_GET&#91;"password"];
+echo "plaintext:$password&lt;br>";
+global $wp_hasher;
+if ( empty($wp_hasher) ) {
+require_once( './wp-includes/class-phpass.php');
+$wp_hasher = new PasswordHash(8, TRUE);
+}
+echo "ciphertext:".$wp_hasher->HashPassword($password)."&lt;br>";
+}
+?></mark></code></pre>
+
+
+
+<p>将该文件上传到wordpress服务文件的根路径下。打开浏览器</p>
+
+
+
+<p>打开浏览器，在浏览器地址栏输入：http://域名/lospw.php?password=新密码，执行成功后会在页面输出明文密码和加密后的密码，复制加密后的密码。</p>
+
+
+
+<p>打开数据库管理工具，打开wordpress使用的数据库，在该数据库下找到以users结尾的表。双击打开该表，在&#8221;user_login&#8221;列中找到需要修改的用户名，然后将user_pass内容修改为复制的内容，然后保存。</p>
+
+
+
+<p>打开wordpress登录页面，输入用户名和重置的密码，可以正常进入了！</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://sunnset.github.io/document/2022/12/31/16.html/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
